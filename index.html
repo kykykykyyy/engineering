@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Engineering Dashboard</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet'>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="logo">
+            <img src="C:\Users\Kyla Anne\Documents\engineering\image\inventuro.png" alt="Inventuro Logo">
+            <span>Inventuro</span>
+        </div>
+
+        <div class="user">
+            <p>YOU</p>
+        </div>
+
+        <ul class="menu">
+            <li class="menu-item has-submenu">
+                <a href="index.html" class="menu-link">
+                    <i class='bx bx-home'></i>
+                    <span class="nav-item">Home</span>
+                    <i class='bx bx-chevron-down arrow'></i>
+                </a>
+                <ul class="submenu">
+                    <li class="submenu-item active">
+                        <a href="index.html">Dashboard</a>
+                    </li>
+                    <li class="submenu-item">
+                        <a href="announcement.html">Announcement</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="menu-item">
+                <a href="requests.html">
+                    <i class='bx bx-wrench'></i>
+                    <span class="nav-item">Repair</span>
+                    <i class='bx bx-chevron-right arrow'></i>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="schedule.html">
+                    <i class='bx bx-cog'></i>
+                    <span class="nav-item">Maintenance</span>
+                    <i class='bx bx-chevron-right arrow'></i>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="hisRepReq.html">
+                    <i class='bx bx-history'></i>
+                    <span class="nav-item">History</span>
+                    <i class='bx bx-chevron-right arrow'></i>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="profSettings.html">
+                    <i class='bx bx-user'></i>
+                    <span class="nav-item">Profile</span>
+                    <i class='bx bx-chevron-right arrow'></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Header Section -->
+    <div class="header">
+        <div class="search-bar">
+            <input type="text" placeholder="Search in Inventory">
+            <i class='bx bx-search'></i>
+        </div>
+        <div class="header-icons">
+            <i class='bx bx-bell' id="notification-icon"></i>
+            <i class='bx bx-cog'></i>
+            <div class="user-profile">
+                <i class='bx bx-user-circle'></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification Overlay -->
+    <div class="notification-overlay" id="notificationOverlay">
+        <div class="notification-header">
+            <i class='bx bx-bell'></i>
+            <span>Notifications</span>
+        </div>
+        <!-- Sample notification items -->
+        <div class="notification-item">
+            <img src="https://via.placeholder.com/40" alt="icon">
+            <div class="notification-details">
+                <div class="notification-title">Title</div>
+                <div class="notification-description">Description</div>
+            </div>
+            <div class="notification-time">9:41 AM</div>
+        </div>
+        <div class="notification-item">
+            <img src="https://via.placeholder.com/40" alt="icon">
+            <div class="notification-details">
+                <div class="notification-title">Title</div>
+                <div class="notification-description">Description</div>
+            </div>
+            <div class="notification-time">9:10 AM</div>
+        </div>
+    </div>
+
+    <!-- Profile Overlay -->
+    <div class="profile-overlay" id="profileOverlay">
+        <div class="profile-header">
+            <i class='bx bx-user'></i>
+            <span>Profile</span>
+        </div>
+        <ul>
+            <li>View Profile</li>
+            <li>Value</li>
+            <li>Log Out</li>
+        </ul>
+    </div>
+
+    <!-- Settings Overlay -->
+    <div class="settings-overlay" id="settingsOverlay">
+        <div class="settings-header">
+            <i class='bx bx-cog' id="settings-icon"></i>
+            <span>Settings</span>
+        </div>
+        <ul>
+            <li>Edit Profile</li>
+            <li>App Settings</li>
+            <li>Log Out</li>
+        </ul>
+    </div>
+
+
+    <script>
+        // Toggle notification overlay visibility
+        const notificationIcon = document.getElementById('notification-icon');
+        const notificationOverlay = document.getElementById('notificationOverlay');
+
+        // Toggle profile overlay visibility
+        const profileIcon = document.querySelector('.bx-user-circle');
+        const profileOverlay = document.getElementById('profileOverlay');
+
+        // Toggle settings overlay visibility
+        const settingsIcon = document.querySelector('.header-icons .bx-cog');
+        const settingsOverlay = document.getElementById('settingsOverlay');
+
+        // Close all overlays
+        function closeAllOverlays() {
+            notificationOverlay.style.display = 'none';
+            profileOverlay.style.display = 'none';
+            settingsOverlay.style.display = 'none';
+        }
+
+        // Notification icon click event
+        notificationIcon.addEventListener('click', (event) => {
+            event.stopPropagation();  
+            closeAllOverlays();  
+            notificationOverlay.style.display = notificationOverlay.style.display === 'block' ? 'none' : 'block';
+        });
+
+        // Profile icon click event
+        profileIcon.addEventListener('click', (event) => {
+            event.stopPropagation();  
+            closeAllOverlays(); 
+            profileOverlay.style.display = profileOverlay.style.display === 'block' ? 'none' : 'block';
+        });
+
+        // Settings icon click event
+        settingsIcon.addEventListener('click', (event) => {
+            event.stopPropagation();  
+            closeAllOverlays();  
+            settingsOverlay.style.display = settingsOverlay.style.display === 'block' ? 'none' : 'block';
+        });
+
+        // Hide overlays when clicking outside
+        document.addEventListener('click', (event) => {
+            closeAllOverlays();  // Close all overlays when clicking outside
+        });
+
+        // Stop event propagation when clicking inside overlays to avoid accidental closing
+        notificationOverlay.addEventListener('click', (event) => {
+            event.stopPropagation();
+        });
+
+        profileOverlay.addEventListener('click', (event) => {
+            event.stopPropagation();
+        });
+
+        settingsOverlay.addEventListener('click', (event) => {
+            event.stopPropagation();
+        });
+    </script>
+
+</body>
+</html>
